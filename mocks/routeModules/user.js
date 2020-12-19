@@ -40,7 +40,7 @@ const userList = {
 }
 
 const userDetail = {
-  url: 'vue-mock/user/list',
+  url: 'vue-mock/user/detail',
   type: 'get',
   response: _ => {
     return {
@@ -63,13 +63,13 @@ const userDetail = {
         imageUri,
         platforms: ['a-platform']
       }),
-      msg: 'succsess'
+      msg: 'succsess213131'
     }
   }
 }
 
 const userList2 = {
-  url: 'vue-mock/user/list',
+  url: 'vue-mock/user/2list',
   type: 'get',
   response: _ => {
     return {
@@ -79,7 +79,7 @@ const userList2 = {
         timestamp: +Mock.Random.date('T'),
         author: '@first',
         imageUri,
-        platforms: ['a-platform']
+        platforms: ['ab-platform']
       }),
       msg: 'succsess'
     }

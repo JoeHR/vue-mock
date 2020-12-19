@@ -4,7 +4,7 @@ const path = require('path')
 const Mock = require('mockjs')
 
 // 存放 mock 文件的 目录
-const mockDir = path.join(process.cwd(), 'mocks/modules')
+const mockDir = path.join(process.cwd(), 'mocks')
 
 // mock 模拟 请求 response
 const responseFake = (url, type, respond) => {
@@ -12,7 +12,6 @@ const responseFake = (url, type, respond) => {
     url: new RegExp(`${process.env.VUE_APP_BASE_API || ''}${url}`),
     type: type || 'get',
     response (req, res) {
-      console.log('🚀👻👻👻 ~ request invoke:', req.path)
       res.json(Mock.mock(respond instanceof Function ? respond(req, res) : respond))
     }
   }
@@ -55,8 +54,6 @@ const unregisterRoutes = () => {
   })
 }
 
-
-
 module.exports = (app) => {
   const mockRoutes = registerRoutes(app)
   let mockRoutesLen = mockRoutes.mockRoutesLen
@@ -71,12 +68,11 @@ module.exports = (app) => {
       try {
         app._router.stack.splice(mockStartIndex, mockRoutesLen)
 
-        unregisterRoutes()
+        // unregisterRoutes()
 
         const mockRoutes = registerRoutes(app)
         mockRoutesLen = mockRoutes.mockRoutesLen
         mockStartIndex = mockRoutes.mockStartIndex
-
         console.log('🚀👻👻👻 ~ file: index.js ~ line 26 ~ path', chalk.magentaBright(`\n > Mock Server hot reload success! changed  ${path}`))
       } catch (error) {
         console.log(chalk.redBright(error))
