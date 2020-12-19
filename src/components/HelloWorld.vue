@@ -5,7 +5,8 @@
       <div class="button" v-copy="'测试一键copy'">一键copy指令</div>
       <div class="button" v-longpress="longpress">长按指令</div>
       <div class="button" v-debounc="debounceClick">click防抖指令</div>
-      <input type="text" v-model="note" v-emoji placeholder="不能输入emoji" />
+      <input type="text" v-model="note" v-emoji placeholder="不能输入😂" />
+      <img v-lazyload="'https://iconfont.alicdn.com/t/c97abc8b-30c9-4a38-8bc3-8cd22aa7ab21.png'" />
     </div>
   </div>
 </template>

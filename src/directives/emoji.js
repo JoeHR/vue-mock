@@ -20,7 +20,6 @@ export default {
     $inp.handler = () => {
       const val = $inp.value
       $inp.value = val.replace(reg, '')
-
       trigger($inp, 'input')
     }
 
