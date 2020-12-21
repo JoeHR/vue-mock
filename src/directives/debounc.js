@@ -1,3 +1,6 @@
+/**
+ * 事件防抖
+ */
 export default {
   inserted (el, { value }) {
     let timer = null

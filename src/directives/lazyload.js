@@ -1,3 +1,6 @@
+/**
+ * 图片懒加载
+ */
 import defaultSrc from '@/assets/logo.png'
 import { throttle } from '@/utils'
 
