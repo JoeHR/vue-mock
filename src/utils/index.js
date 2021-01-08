@@ -1,3 +1,22 @@
+/**
+ * 函数防抖
+ * @param {*} fn
+ * @param {*} delay
+ */
+export function Debounce (fn, delay = 500) {
+  let timer
+  return function () {
+    const args = arguments
+    if (timer) {
+      clearTimeout(timer)
+    }
+    timer = setTimeout(() => {
+      timer = null
+      fn.apply(this, args)
+    }, delay)
+  }
+}
+
 // 节流
 export function throttle (fn, delay) {
   let timer
@@ -21,4 +40,11 @@ export function throttle (fn, delay) {
       fn.apply(context, args)
     }, delay)
   }
+}
+
+/**
+ * 从缓存中提取token
+ */
+export function getToken () {
+  return sessionStorage.getItem('token')
 }
