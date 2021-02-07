@@ -32,9 +32,7 @@ export default {
         }
 
         el.style.left = x + 'px'
-        console.log('🚀👻👻👻 ~ file: drag.js ~ line 32 ~ inserted ~ x', x)
         el.style.top = y + 'px'
-        console.log('🚀👻👻👻 ~ file: drag.js ~ line 34 ~ inserted ~ y', y)
       }
 
       document.onmouseup = function () {

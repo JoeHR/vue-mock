@@ -48,6 +48,34 @@
         测试同一请求重复发送,在并发时间内只会发送最后一次请求,打开控制台查看
       </div>
     </div>
+    <div class="directive-box">
+      <div class="button" @click="changeTestNum">
+        数字滚动增加动画，点击一次就会改变一次数字
+      </div>
+      <div>这个数字不会滚动变化</div>
+      <div class="num">{{ testNum }}</div>
+      <div>下面的数字会滚动变化</div>
+      <div class="num-box" v-numscroll="testNum">{{ testNum }}</div>
+    </div>
+    <div class="directive-box">
+      <div class="tips" @click="changeTestNum">
+        字幕滚动轮播：
+      </div>
+      <div class="scroll-parent">
+        <div class="scroll-ul" v-textscroll>
+          <div class="scroll-list" v-for="i in 20" :key="'scroll_'+i">
+            这是滚动的元素 {{i}}
+          </div>
+        </div>
+      </div>
+      <div class="scroll-parent height200">
+        <div class="scroll-ul" v-textscroll>
+          <div class="scroll-list" v-for="i in 20" :key="'scroll1_'+i">
+            这是滚动的元素 {{i}}
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -57,7 +85,8 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      note: ''
+      note: '',
+      testNum: 0
     }
   },
   props: {
@@ -75,6 +104,9 @@ export default {
         queryUser2List()
         realHttp()
       }
+    },
+    changeTestNum () {
+      this.testNum = Math.ceil(Math.random() * 10000)
     }
   }
 }
@@ -115,6 +147,24 @@ export default {
       &:hover {
         background: #fff;
         color: #5b8cff;
+      }
+    }
+
+    .scroll-parent{
+      width: 80%;
+      height: 36px;
+      border:1px solid #98acdf;
+      overflow: hidden;
+      margin: 0 auto;
+      margin-top: 30px;
+      &.height200{
+        height: 200px;
+      }
+      .scroll-list{
+        width: 100%;
+        line-height: 36px;
+        box-sizing: border-box;
+        border-bottom: 1px solid  #98acdf;
       }
     }
   }
