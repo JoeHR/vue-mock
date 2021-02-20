@@ -58,29 +58,31 @@
       <div class="num-box" v-numscroll="testNum">{{ testNum }}</div>
     </div>
     <div class="directive-box">
-      <div class="tips" @click="changeTestNum">
-        字幕滚动轮播：
-      </div>
+      <div class="tips" @click="changeTestNum">字幕滚动轮播：</div>
       <div class="scroll-parent">
         <div class="scroll-ul" v-textscroll>
-          <div class="scroll-list" v-for="i in 20" :key="'scroll_'+i">
-            这是滚动的元素 {{i}}
+          <div class="scroll-list" v-for="i in 20" :key="'scroll_' + i">
+            这是滚动的元素 {{ i }}
           </div>
         </div>
       </div>
       <div class="scroll-parent height200">
         <div class="scroll-ul" v-textscroll>
-          <div class="scroll-list" v-for="i in 20" :key="'scroll1_'+i">
-            这是滚动的元素 {{i}}
+          <div class="scroll-list" v-for="i in 20" :key="'scroll1_' + i">
+            这是滚动的元素 {{ i }}
           </div>
         </div>
       </div>
+    </div>
+    <div class="directive-box">
+      <div class="button" @click="openDialog">自定义弹窗</div>
     </div>
   </div>
 </template>
 
 <script>
 import { queryUser2List, realHttp } from '@/apis/modules/testMock'
+import TestModal from './modals/TestModal'
 export default {
   name: 'HelloWorld',
   data () {
@@ -107,6 +109,10 @@ export default {
     },
     changeTestNum () {
       this.testNum = Math.ceil(Math.random() * 10000)
+    },
+    async openDialog () {
+      const res = await this.$dialog.show('我的弹窗', TestModal, { width: '300px', height: '300px' }, { propData: 1, test: 2 })
+      console.log('🚀👻👻👻 ~ file: HelloWorld.vue ~ line 115 ~ openDialog ~ res', res)
     }
   }
 }
@@ -150,21 +156,21 @@ export default {
       }
     }
 
-    .scroll-parent{
+    .scroll-parent {
       width: 80%;
       height: 36px;
-      border:1px solid #98acdf;
+      border: 1px solid #98acdf;
       overflow: hidden;
       margin: 0 auto;
       margin-top: 30px;
-      &.height200{
+      &.height200 {
         height: 200px;
       }
-      .scroll-list{
+      .scroll-list {
         width: 100%;
         line-height: 36px;
         box-sizing: border-box;
-        border-bottom: 1px solid  #98acdf;
+        border-bottom: 1px solid #98acdf;
       }
     }
   }

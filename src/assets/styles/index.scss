@@ -1,0 +1,72 @@
+.rh-dialog .rh-dialog-wrap {
+  box-sizing: border-box;
+  animation-fill-mode: both;
+  animation-duration: 0.3s;
+  animation-name: bounceIn;
+  // background: rgba(0, 0, 0, 0.5);
+  background: rgba(255,255,255,1);
+  // border: 0.01rem solid rgba(81, 164, 213, 1);
+  // box-shadow: 0rem 0rem 0.03rem 0rem #4B87FF;
+  border-top: 0.02rem;
+}
+.rh-dialog.rh-dialog-leave {
+  background: transparent
+}
+.rh-dialog.rh-dialog-leave .rh-dialog-wrap{
+  animation-name: bounceOut;
+}
+
+.rh-dialog .rh-dialog-header {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  line-height: 28px;
+  padding: 0 15px;
+  // background: linear-gradient(180deg, #010206 0%, #376678 100%);
+  opacity: 0.5;
+}
+.rh-dialog .rh-dialog-header-title {
+  font-size: 14px;
+  font-weight: 400;
+  color:rgba(0, 0, 0, 1);
+  text-shadow: 1px 0px 0px #4b87ff;
+}
+.rh-dialog .rh-dialog-header-title .fziconfont{
+  margin-right: 0.1rem;
+}
+
+.rh-dialog .rh-dialog-header .fziconfont {
+  font-size: 0.12rem;
+  color:rgba(0, 0, 0, 1);
+  cursor: pointer;
+}
+.rh-dialog .rh-dialog-body {
+  width: 100%;
+  height: calc(100% - 28px);
+  box-sizing: border-box;
+}
+
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes bounceOut {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+}

@@ -2,7 +2,9 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import { Debounce } from '@/utils'
+import '@/assets/styles/index.scss'
 import '@/directives'
+import '@/components/common/Dialog'
 
 Vue.config.productionTip = false
 
