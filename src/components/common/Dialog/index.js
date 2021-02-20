@@ -30,7 +30,6 @@ class Dialog {
 
       const observer = {
         cancel: function (isSuccess = false) {
-          debugger
           this.close()
           if (isSuccess) {
             resolve(true)
