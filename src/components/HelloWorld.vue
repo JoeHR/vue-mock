@@ -113,6 +113,11 @@ export default {
     async openDialog () {
       const res = await this.$dialog.show('我的弹窗', TestModal, { width: '300px', height: '300px' }, { propData: 1, test: 2 })
       console.log('🚀👻👻👻 ~ file: HelloWorld.vue ~ line 115 ~ openDialog ~ res', res)
+      if (res) {
+        alert('弹窗关闭后返回了true')
+      } else {
+        alert('弹窗关闭后返回了false')
+      }
     }
   }
 }
