@@ -1,6 +1,11 @@
 <template>
   <div class="testModal">
-    <div class="btn-group">
+    <div class="modal-body">
+      <div class="height500" v-if="noheight">
+        里面有个高度500的元素撑开
+      </div>
+    </div>
+    <div class="btn-flex">
       <div class="cancel button" @click="onCancel(false)">取消</div>
       <div class="confirm button" @click="onSubmit">确认</div>
     </div>
@@ -9,6 +14,9 @@
 
 <script>
 export default {
+  props: {
+    noheight: Boolean
+  },
   name: 'TestModal',
   methods: {
     onCancel (isSuccess = false) {
@@ -27,9 +35,25 @@ export default {
 
 <style lang="scss" scoped>
 .testModal {
-  .btn-group {
+  width: 100%;
+  height: 100%;
+  .modal-body{
+    height: calc(100% - 50px);
+    background-color: #a9bdec;
+    color: #fff;
+    .height500{
+      height: 500px;
+    }
+  }
+  .btn-flex {
+    margin: 5px 0;
+    padding: 0 15px;
     display: flex;
+    justify-content: flex-end;
     .button {
+      &:not(:last-of-type){
+        margin-right: 10px;
+      }
       display: inline-block;
       height: 32px;
       border-radius: 4px;

@@ -12,6 +12,5 @@ const directives = directivesFiles.keys().reduce((module, modulePath) => {
 }, [])
 
 directives.forEach(v => {
-  console.log('🚀👻👻👻 ~ file: index.js ~ line 13 ~ v', v)
   Vue.directive(v.name, v.directive)
 })

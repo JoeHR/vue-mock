@@ -1,3 +1,5 @@
+import { toThousand, getDurationTime } from '@/utils'
+
 /**
  * 贝塞尔速度曲线
  * @param {*} currentTime
@@ -11,7 +13,9 @@ const easeInOutQuad = (currentTime, startValue, changeValue, duration) => {
     return (changeValue / 2) * currentTime * currentTime + startValue
   }
   currentTime--
-  return (-changeValue / 2) * (currentTime * (currentTime - 2) - 1) + startValue
+  return (
+    (-changeValue / 2) * (currentTime * (currentTime - 2) - 1) + startValue
+  )
 }
 
 /**
@@ -32,11 +36,23 @@ const animate = (el, dest) => {
     const showValue = parseInt(
       easeInOutQuad(timestamp, begin, change, duration)
     ) // 根据速度曲线计算展示值
-    el.innerText = showValue // 赋值
+    if (el.dataset.time) {
+      el.innerText = getDurationTime(showValue)
+    } else if (el.dataset.thousand) {
+      el.innerText = toThousand(showValue) // 赋值
+    } else {
+      el.innerText = showValue
+    }
     el.oldValue = showValue // 缓存值
     if (duration <= timestamp) {
       // 动画临界条件
-      el.innerText = dest
+      if (el.dataset.time) {
+        el.innerText = getDurationTime(dest)
+      } else if (el.dataset.thousand) {
+        el.innerText = toThousand(dest)
+      } else {
+        el.innerText = dest
+      }
       el.oldValue = dest
       window.cancelAnimationFrame(myReq)
     } else {

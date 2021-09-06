@@ -48,3 +48,32 @@ export function throttle (fn, delay) {
 export function getToken () {
   return sessionStorage.getItem('token')
 }
+
+/**
+ * 时间差转换
+ * @param {*} dis 秒
+ */
+export function getDurationTime (dis) {
+  let ss = Math.round(dis % 60)
+  ss = ss > 9 ? ss : '0' + ss
+  let m = Math.floor((dis / 60) % 60)
+  m = m > 9 ? m : '0' + m
+  const h = Math.floor((dis / 3600) % 24)
+  const d = Math.floor((dis / 3600) / 24)
+  if (d) {
+    return `${d}天 ${h > 9 ? h : '0' + h}:${m}:${ss}`
+  } else if (h) {
+    return `${h > 9 ? h : '0' + h}:${m}:${ss}`
+  } else {
+    return `${m}′${ss}″`
+  }
+}
+
+/**
+ * 千分位 格式化数字
+ * @param {*} num
+ * @returns
+ */
+export function toThousand (num = 0) {
+  return Number.prototype.toLocaleString.call(num, 'en-GB') || '0'
+}
